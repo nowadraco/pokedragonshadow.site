@@ -5607,6 +5607,13 @@
 "tipo2": "Fantasma"
 },
 {
+"id": 720,
+"nome": "Hoopa Libertado",
+"img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/Addressable%20Assets/pm720.fUNBOUND.icon.png",
+"tipo1": "Psíquico",
+"tipo2": "Sombrio"
+},
+{
 "id": 721,
 "nome": "Volcanion",
 "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/Addressable%20Assets/pm721.icon.png",
