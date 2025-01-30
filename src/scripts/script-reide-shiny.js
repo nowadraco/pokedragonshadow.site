@@ -122,6 +122,41 @@ function generatePokemonListItem(pokemon) {
         `<img class="clima-boost" src="${getWeatherIcon(tipo)}">`
     ).join('');
 
+    function buscarPokemon(pokemons, nome) {
+        const nomeNormalizado = nome.replace('*', '').toLowerCase();
+        return pokemons.find(pokemon => pokemon.nome.toLowerCase() === nomeNormalizado);
+    }
+    
+    function buscarShinyPokemon(shinyPokemons, nome) {
+        const nomeNormalizado = nome.replace('*', '').toLowerCase();
+        return shinyPokemons.find(shiny => shiny.nome.toLowerCase() === nomeNormalizado);
+    }
+
+    function alternarImagens(pokemons, shinyPokemons) {
+        const listas = document.querySelectorAll('.pokemon-list li');
+    
+        listas.forEach(item => {
+            const nome = item.textContent.trim();
+            const img = item.querySelector('img');
+            const pokemon = buscarPokemon(pokemons, nome);
+            const shinyPokemon = buscarShinyPokemon(shinyPokemons, nome);
+    
+            if (img && pokemon && shinyPokemon && nome.includes('*')) {
+                let showShiny = false;
+                setInterval(() => {
+                    img.style.transition = 'opacity 0.5s';
+                    img.style.opacity = 0;
+                    setTimeout(() => {
+                        img.src = showShiny ? shinyPokemon.img : pokemon.img;
+                        img.style.opacity = 1;
+                        showShiny = !showShiny;
+                    }, 500);
+                }, 2500);
+            }
+        });
+    }
+    
+
     return `<li class="Selvagem ${validTipos.map(t => t.toLowerCase()).join(' ')}" 
                style="background: ${gradientBackground};">
         <img class="imgSelvagem" src="${pokemon.img}" alt="${pokemon.nome}"> 
@@ -137,9 +172,11 @@ function generatePokemonListItem(pokemon) {
 
 async function processSpecificPokemonList() {
     try {
-        // Buscar o JSON com todos os Pokémon
+        // Buscar os JSONs com todos os Pokémon
         const response = await fetch('https://raw.githubusercontent.com/nowadraco/pokedragonshadow.site/refs/heads/main/src/json_files/output.json');
+        const shinyResponse = await fetch('URL_DO_ARQUIVO_DE_POKEMONS_SHINY');
         const allPokemon = await response.json();
+        const shinyPokemons = await shinyResponse.json();
 
         // Pegar TODAS as listas de Pokémon do HTML
         const pokemonLists = document.querySelectorAll('.pokemon-list');
@@ -174,16 +211,21 @@ async function processSpecificPokemonList() {
 
             // Substituir o conteúdo desta lista específica
             pokemonListElement.innerHTML = pokemonListHTML;
+
             // Manter a classe original e adicionar 'selvagens' se não existir
             if (!pokemonListElement.classList.contains('selvagens')) {
                 pokemonListElement.classList.add('selvagens');
             }
         });
 
+        // Chame alternarImagens após preencher a lista
+        alternarImagens(allPokemon, shinyPokemons);
+
     } catch (error) {
         console.error('Erro ao processar as listas de Pokémon:', error);
     }
 }
+
 
 // Executar o processamento quando o script for carregado
 processSpecificPokemonList();
