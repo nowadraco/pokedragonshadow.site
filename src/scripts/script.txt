@@ -1,0 +1,109 @@
+eu queria que ele fizese as mesmas coisas que o codigo um no primiro ele tem a opação de colocar a imagem shiny quando tem uma * voce consegeue me pasar as fuctions que tem isso para colocar no outro codigo
+Claro! Para adicionar a funcionalidade de alternar imagens para Pokémons shiny no segundo código, você precisará integrar algumas funções do primeiro código. Aqui estão as funções relevantes que você precisará adicionar:
+
+Função buscarPokemon:
+
+javascript
+function buscarPokemon(pokemons, nome) {
+    const nomeNormalizado = nome.replace('*', '').toLowerCase();
+    return pokemons.find(pokemon => pokemon.nome.toLowerCase() === nomeNormalizado);
+}
+Função buscarShinyPokemon:
+
+javascript
+function buscarShinyPokemon(shinyPokemons, nome) {
+    const nomeNormalizado = nome.replace('*', '').toLowerCase();
+    return shinyPokemons.find(shiny => shiny.nome.toLowerCase() === nomeNormalizado);
+}
+Função alternarImagens:
+
+javascript
+function alternarImagens(pokemons, shinyPokemons) {
+    const listas = document.querySelectorAll('.pokemon-list li');
+
+    listas.forEach(item => {
+        const nome = item.textContent.trim();
+        const img = item.querySelector('img');
+        const pokemon = buscarPokemon(pokemons, nome);
+        const shinyPokemon = buscarShinyPokemon(shinyPokemons, nome);
+
+        if (img && pokemon && shinyPokemon && nome.includes('*')) {
+            let showShiny = false;
+            setInterval(() => {
+                img.style.transition = 'opacity 0.5s';
+                img.style.opacity = 0;
+                setTimeout(() => {
+                    img.src = showShiny ? shinyPokemon.img : pokemon.img;
+                    img.style.opacity = 1;
+                    showShiny = !showShiny;
+                }, 500);
+            }, 2500);
+        }
+    });
+}
+Além disso, você deve fazer algumas modificações para garantir que os dados de shinyPokemons sejam carregados. Veja como incorporar isso na função processSpecificPokemonList:
+
+Modifique processSpecificPokemonList para carregar os shinyPokemons:
+
+javascript
+async function processSpecificPokemonList() {
+    try {
+        // Buscar os JSONs com todos os Pokémon
+        const response = await fetch('https://raw.githubusercontent.com/nowadraco/pokedragonshadow.site/refs/heads/main/src/json_files/output.json');
+        const shinyResponse = await fetch('URL_DO_ARQUIVO_DE_POKEMONS_SHINY');
+        const allPokemon = await response.json();
+        const shinyPokemons = await shinyResponse.json();
+
+        // Pegar TODAS as listas de Pokémon do HTML
+        const pokemonLists = document.querySelectorAll('.pokemon-list');
+        
+        // Processar cada lista individualmente
+        pokemonLists.forEach(async (pokemonListElement) => {
+            // Pegar os nomes dos Pokémon desta lista específica
+            const pokemonNames = Array.from(pokemonListElement.getElementsByTagName('li'))
+                .map(li => {
+                    // Remove o asterisco e "de Hisui" do nome para comparação
+                    return li.textContent
+                        .replace('*', '')
+                        .replace(' de Hisui', '')
+                        .replace('Mega ', '')
+                        .trim();
+                });
+
+            // Filtrar apenas os Pokémon que estão nesta lista específica
+            const filteredPokemon = allPokemon.filter(pokemon => {
+                // Limpa o nome do Pokémon do JSON para comparação
+                const cleanPokemonName = pokemon.nome
+                    .replace(' de Hisui', '')
+                    .replace('Mega ', '')
+                    .trim();
+                return pokemonNames.includes(cleanPokemonName);
+            });
+
+            // Gerar o HTML para os Pokémon filtrados desta lista
+            const pokemonListHTML = filteredPokemon.map(pokemon => 
+                generatePokemonListItem(pokemon)
+            ).join('');
+
+            // Substituir o conteúdo desta lista específica
+            pokemonListElement.innerHTML = pokemonListHTML;
+
+            // Manter a classe original e adicionar 'selvagens' se não existir
+            if (!pokemonListElement.classList.contains('selvagens')) {
+                pokemonListElement.classList.add('selvagens');
+            }
+        });
+
+        // Chame alternarImagens após preencher a lista
+        alternarImagens(allPokemon, shinyPokemons);
+
+    } catch (error) {
+        console.error('Erro ao processar as listas de Pokémon:', error);
+    }
+}
+Certifique-se de substituir 'URL_DO_ARQUIVO_DE_POKEMONS_SHINY' pela URL correta do JSON de Pokémons shiny.
+
+Com estas integrações, você conseguirá alternar as imagens de Pokémons para suas versões shiny quando houver um asterisco (*) no nome.
+
+Se precisar de mais alguma coisa ou tiver outra dúvida, estou aqui para ajudar! 😊
+
