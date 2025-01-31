@@ -129,7 +129,7 @@ function alternarImagens(pokemons, shinyPokemons) {
 function generatePokemonListItem(pokemon, shinyPokemon) {
     const validTipos = pokemon.tipos.filter(tipo => tipo !== "null");
     const typeColors = validTipos.map(tipo => getTypeColor(tipo));
-    
+
     let gradientBackground;
     if (typeColors.length === 1) {
         gradientBackground = typeColors[0];
@@ -155,12 +155,12 @@ function generatePokemonListItem(pokemon, shinyPokemon) {
         `<img class="clima-boost" src="${getWeatherIcon(tipo)}">`
     ).join('');
 
-    const nomePokemon = pokemon.nome.includes('*') ? pokemon.nome + '*' : pokemon.nome;
+    const nomePokemon = pokemon.nome;
 
     return `<li class="Selvagem ${validTipos.map(t => t.toLowerCase()).join(' ')}" 
                style="background: ${gradientBackground};">
         <img class="imgSelvagem" src="${pokemon.img}" alt="${nomePokemon}"> 
-        ${nomePokemon}
+        ${nomePokemon.includes('*') ? nomePokemon + '*' : nomePokemon}
         <div class="tipo-icons">${typeIcons}</div>
         <div class="pc-info">PC: ${cpInfo.normal} - ${cpInfo.perfect}</div>
         <div class="boost">
