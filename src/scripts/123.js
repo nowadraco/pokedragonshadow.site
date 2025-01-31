@@ -32,8 +32,8 @@ function alternarImagens(pokemons, shinyPokemons) {
     listas.forEach(item => {
         const nome = item.textContent.trim();
         const img = item.querySelector('img');
-        const pokemon = buscarPokemon(pokemons, nome);
-        const shinyPokemon = buscarShinyPokemon(shinyPokemons, nome);
+        const pokemon = buscarPokemon(pokemons, nome.replace('*', ''));
+        const shinyPokemon = buscarShinyPokemon(shinyPokemons, nome.replace('*', ''));
 
         if (img && pokemon && shinyPokemon && nome.includes('*')) {
             let showShiny = false;
@@ -50,7 +50,7 @@ function alternarImagens(pokemons, shinyPokemons) {
     });
 }
 
-function generatePokemonListItem(pokemon) {
+function generatePokemonListItem(pokemon, shinyPokemon) {
     const validTipos = pokemon.tipos.filter(tipo => tipo !== "null");
     const typeColors = validTipos.map(tipo => getTypeColor(tipo));
     
@@ -79,10 +79,12 @@ function generatePokemonListItem(pokemon) {
         `<img class="clima-boost" src="${getWeatherIcon(tipo)}">`
     ).join('');
 
+    const nomePokemon = pokemon.nome.includes('*') ? pokemon.nome + '*' : pokemon.nome;
+
     return `<li class="Selvagem ${validTipos.map(t => t.toLowerCase()).join(' ')}" 
                style="background: ${gradientBackground};">
-        <img class="imgSelvagem" src="${pokemon.img}" alt="${pokemon.nome}"> 
-        ${pokemon.nome}
+        <img class="imgSelvagem" src="${pokemon.img}" alt="${nomePokemon}"> 
+        ${nomePokemon}
         <div class="tipo-icons">${typeIcons}</div>
         <div class="pc-info">PC: ${cpInfo.normal} - ${cpInfo.perfect}</div>
         <div class="boost">
@@ -110,7 +112,11 @@ async function processSpecificPokemonList() {
                 return pokemonNames.includes(cleanPokemonName);
             });
 
-            const pokemonListHTML = filteredPokemon.map(pokemon => generatePokemonListItem(pokemon)).join('');
+            const pokemonListHTML = filteredPokemon.map(pokemon => {
+                const shinyPokemon = buscarShinyPokemon(shinyPokemons, pokemon.nome);
+                return generatePokemonListItem(pokemon, shinyPokemon);
+            }).join('');
+            
             pokemonListElement.innerHTML = pokemonListHTML;
 
             if (!pokemonListElement.classList.contains('selvagens')) {

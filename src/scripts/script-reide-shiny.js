@@ -108,8 +108,8 @@ function alternarImagens(pokemons, shinyPokemons) {
     listas.forEach(item => {
         const nome = item.textContent.trim();
         const img = item.querySelector('img');
-        const pokemon = buscarPokemon(pokemons, nome);
-        const shinyPokemon = buscarShinyPokemon(shinyPokemons, nome);
+        const pokemon = buscarPokemon(pokemons, nome.replace('*', ''));
+        const shinyPokemon = buscarShinyPokemon(shinyPokemons, nome.replace('*', ''));
 
         if (img && pokemon && shinyPokemon && nome.includes('*')) {
             let showShiny = false;
@@ -126,14 +126,13 @@ function alternarImagens(pokemons, shinyPokemons) {
     });
 }
 
-function generatePokemonListItem(pokemon) {
-    // Filtrar valores 'null' como string no array tipos
+function generatePokemonListItem(pokemon, shinyPokemon) {
     const validTipos = pokemon.tipos.filter(tipo => tipo !== "null");
     const typeColors = validTipos.map(tipo => getTypeColor(tipo));
-
+    
     let gradientBackground;
     if (typeColors.length === 1) {
-        gradientBackground = typeColors[0]; // Usar a cor do único tipo válido
+        gradientBackground = typeColors[0];
     } else {
         gradientBackground = `linear-gradient(to right, ${typeColors.join(', ')})`;
     }
@@ -156,10 +155,12 @@ function generatePokemonListItem(pokemon) {
         `<img class="clima-boost" src="${getWeatherIcon(tipo)}">`
     ).join('');
 
+    const nomePokemon = pokemon.nome.includes('*') ? pokemon.nome + '*' : pokemon.nome;
+
     return `<li class="Selvagem ${validTipos.map(t => t.toLowerCase()).join(' ')}" 
                style="background: ${gradientBackground};">
-        <img class="imgSelvagem" src="${pokemon.img}" alt="${pokemon.nome}"> 
-        ${pokemon.nome}
+        <img class="imgSelvagem" src="${pokemon.img}" alt="${nomePokemon}"> 
+        ${nomePokemon}
         <div class="tipo-icons">${typeIcons}</div>
         <div class="pc-info">PC: ${cpInfo.normal} - ${cpInfo.perfect}</div>
         <div class="boost">
@@ -169,56 +170,36 @@ function generatePokemonListItem(pokemon) {
     </li>`;
 }
 
-
 async function processSpecificPokemonList() {
     try {
-        // Buscar os JSONs com todos os Pokémon
         const response = await fetch('https://raw.githubusercontent.com/nowadraco/pokedragonshadow.site/refs/heads/main/src/json_files/output.json');
         const shinyResponse = await fetch('https://raw.githubusercontent.com/nowadraco/pokedragonshadow.site/refs/heads/main/src/json_files/output_shiny.json');
         const allPokemon = await response.json();
         const shinyPokemons = await shinyResponse.json();
 
-        // Pegar TODAS as listas de Pokémon do HTML
         const pokemonLists = document.querySelectorAll('.pokemon-list');
 
-        // Processar cada lista individualmente
         pokemonLists.forEach(async (pokemonListElement) => {
-            // Pegar os nomes dos Pokémon desta lista específica
             const pokemonNames = Array.from(pokemonListElement.getElementsByTagName('li'))
-                .map(li => {
-                    // Remove o asterisco e "de Hisui" do nome para comparação
-                    return li.textContent
-                        .replace('*', '')
-                        .replace(' de Hisui', '')
-                        .replace('Mega ', '')
-                        .trim();
-                });
+                .map(li => li.textContent.replace('*', '').replace(' de Hisui', '').replace('Mega ', '').trim());
 
-            // Filtrar apenas os Pokémon que estão nesta lista específica
             const filteredPokemon = allPokemon.filter(pokemon => {
-                // Limpa o nome do Pokémon do JSON para comparação
-                const cleanPokemonName = pokemon.nome
-                    .replace(' de Hisui', '')
-                    .replace('Mega ', '')
-                    .trim();
+                const cleanPokemonName = pokemon.nome.replace(' de Hisui', '').replace('Mega ', '').trim();
                 return pokemonNames.includes(cleanPokemonName);
             });
 
-            // Gerar o HTML para os Pokémon filtrados desta lista
-            const pokemonListHTML = filteredPokemon.map(pokemon =>
-                generatePokemonListItem(pokemon)
-            ).join('');
-
-            // Substituir o conteúdo desta lista específica
+            const pokemonListHTML = filteredPokemon.map(pokemon => {
+                const shinyPokemon = buscarShinyPokemon(shinyPokemons, pokemon.nome);
+                return generatePokemonListItem(pokemon, shinyPokemon);
+            }).join('');
+            
             pokemonListElement.innerHTML = pokemonListHTML;
 
-            // Manter a classe original e adicionar 'selvagens' se não existir
             if (!pokemonListElement.classList.contains('selvagens')) {
                 pokemonListElement.classList.add('selvagens');
             }
         });
 
-        // Chame alternarImagens após preencher a lista
         alternarImagens(allPokemon, shinyPokemons);
 
     } catch (error) {
@@ -226,6 +207,4 @@ async function processSpecificPokemonList() {
     }
 }
 
-
-// Executar o processamento quando o script for carregado
 processSpecificPokemonList();
