@@ -178,26 +178,25 @@ async function processSpecificPokemonList() {
 
         const pokemonLists = document.querySelectorAll('.pokemon-list');
 
-        pokemonLists.forEach(async (pokemonListElement) => {
+        for (const pokemonListElement of pokemonLists) { // Usando for...of para async/await
             const pokemonNames = Array.from(pokemonListElement.getElementsByTagName('li'))
-                .map(li => li.textContent.replace('*', '').replace(' de Hisui', '').replace('Mega ', '').trim());
+                .map(li => li.textContent.replace('*', '').trim()); // Remove apenas *
 
             const filteredPokemon = allPokemon.filter(pokemon => {
-                const cleanPokemonName = pokemon.nome.replace(' de Hisui', '').replace('Mega ', '').trim();
-                return pokemonNames.includes(cleanPokemonName);
+                return pokemonNames.includes(pokemon.nome.replace('*', '').trim()); // Remove apenas *
             });
 
             const pokemonListHTML = filteredPokemon.map(pokemon => {
-                const shinyPokemon = buscarShinyPokemon(shinyPokemons, pokemon.nome);
+                const shinyPokemon = shinyPokemons.find(shiny => shiny.nome.toLowerCase() === pokemon.nome.toLowerCase());
                 return generatePokemonListItem(pokemon, shinyPokemon);
             }).join('');
-            
+
             pokemonListElement.innerHTML = pokemonListHTML;
 
             if (!pokemonListElement.classList.contains('selvagens')) {
                 pokemonListElement.classList.add('selvagens');
             }
-        });
+        }
 
         alternarImagens(allPokemon, shinyPokemons);
 
@@ -205,5 +204,6 @@ async function processSpecificPokemonList() {
         console.error('Erro ao processar as listas de Pokémon:', error);
     }
 }
+
 
 processSpecificPokemonList();
