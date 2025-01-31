@@ -92,11 +92,45 @@ function calculateCP(baseStats, ivs, level) {
     return cp;
 }
 
+function buscarPokemon(pokemons, nome) {
+    const nomeNormalizado = nome.replace('*', '').toLowerCase();
+    return pokemons.find(pokemon => pokemon.nome.toLowerCase() === nomeNormalizado);
+}
+
+function buscarShinyPokemon(shinyPokemons, nome) {
+    const nomeNormalizado = nome.replace('*', '').toLowerCase();
+    return shinyPokemons.find(shiny => shiny.nome.toLowerCase() === nomeNormalizado);
+}
+
+function alternarImagens(pokemons, shinyPokemons) {
+    const listas = document.querySelectorAll('.pokemon-list li');
+
+    listas.forEach(item => {
+        const nome = item.textContent.trim();
+        const img = item.querySelector('img');
+        const pokemon = buscarPokemon(pokemons, nome);
+        const shinyPokemon = buscarShinyPokemon(shinyPokemons, nome);
+
+        if (img && pokemon && shinyPokemon && nome.includes('*')) {
+            let showShiny = false;
+            setInterval(() => {
+                img.style.transition = 'opacity 0.5s';
+                img.style.opacity = 0;
+                setTimeout(() => {
+                    img.src = showShiny ? shinyPokemon.img : pokemon.img;
+                    img.style.opacity = 1;
+                    showShiny = !showShiny;
+                }, 500);
+            }, 2500);
+        }
+    });
+}
+
 function generatePokemonListItem(pokemon) {
     // Filtrar valores 'null' como string no array tipos
     const validTipos = pokemon.tipos.filter(tipo => tipo !== "null");
     const typeColors = validTipos.map(tipo => getTypeColor(tipo));
-    
+
     let gradientBackground;
     if (typeColors.length === 1) {
         gradientBackground = typeColors[0]; // Usar a cor do único tipo válido
@@ -122,41 +156,6 @@ function generatePokemonListItem(pokemon) {
         `<img class="clima-boost" src="${getWeatherIcon(tipo)}">`
     ).join('');
 
-    function buscarPokemon(pokemons, nome) {
-        const nomeNormalizado = nome.replace('*', '').toLowerCase();
-        return pokemons.find(pokemon => pokemon.nome.toLowerCase() === nomeNormalizado);
-    }
-    
-    function buscarShinyPokemon(shinyPokemons, nome) {
-        const nomeNormalizado = nome.replace('*', '').toLowerCase();
-        return shinyPokemons.find(shiny => shiny.nome.toLowerCase() === nomeNormalizado);
-    }
-
-    function alternarImagens(pokemons, shinyPokemons) {
-        const listas = document.querySelectorAll('.pokemon-list li');
-    
-        listas.forEach(item => {
-            const nome = item.textContent.trim();
-            const img = item.querySelector('img');
-            const pokemon = buscarPokemon(pokemons, nome);
-            const shinyPokemon = buscarShinyPokemon(shinyPokemons, nome);
-    
-            if (img && pokemon && shinyPokemon && nome.includes('*')) {
-                let showShiny = false;
-                setInterval(() => {
-                    img.style.transition = 'opacity 0.5s';
-                    img.style.opacity = 0;
-                    setTimeout(() => {
-                        img.src = showShiny ? shinyPokemon.img : pokemon.img;
-                        img.style.opacity = 1;
-                        showShiny = !showShiny;
-                    }, 500);
-                }, 2500);
-            }
-        });
-    }
-    
-
     return `<li class="Selvagem ${validTipos.map(t => t.toLowerCase()).join(' ')}" 
                style="background: ${gradientBackground};">
         <img class="imgSelvagem" src="${pokemon.img}" alt="${pokemon.nome}"> 
@@ -170,17 +169,18 @@ function generatePokemonListItem(pokemon) {
     </li>`;
 }
 
+
 async function processSpecificPokemonList() {
     try {
         // Buscar os JSONs com todos os Pokémon
         const response = await fetch('https://raw.githubusercontent.com/nowadraco/pokedragonshadow.site/refs/heads/main/src/json_files/output.json');
-        const shinyResponse = await fetch('URL_DO_ARQUIVO_DE_POKEMONS_SHINY');
+        const shinyResponse = await fetch('https://raw.githubusercontent.com/nowadraco/pokedragonshadow.site/refs/heads/main/src/json_files/output_shiny.json');
         const allPokemon = await response.json();
         const shinyPokemons = await shinyResponse.json();
 
         // Pegar TODAS as listas de Pokémon do HTML
         const pokemonLists = document.querySelectorAll('.pokemon-list');
-        
+
         // Processar cada lista individualmente
         pokemonLists.forEach(async (pokemonListElement) => {
             // Pegar os nomes dos Pokémon desta lista específica
@@ -205,7 +205,7 @@ async function processSpecificPokemonList() {
             });
 
             // Gerar o HTML para os Pokémon filtrados desta lista
-            const pokemonListHTML = filteredPokemon.map(pokemon => 
+            const pokemonListHTML = filteredPokemon.map(pokemon =>
                 generatePokemonListItem(pokemon)
             ).join('');
 
