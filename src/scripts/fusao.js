@@ -115,28 +115,35 @@ function buscarShinyPokemon(shinyPokemons, nome) {
 }
 
 function alternarImagens(pokemons, shinyPokemons) {
-    const listas = document.querySelectorAll('.pokemon-list li');
+  const listas = document.querySelectorAll('.pokemon-list li');
 
-    listas.forEach(item => {
-        const nomeOriginal = item.textContent.trim();  // Captura o nome original com o *
-        const nomeSemAsterisco = nomeOriginal.replace('*', ''); // Nome sem *
-        const img = item.querySelector('img');
-        const pokemon = buscarPokemon(pokemons, nomeSemAsterisco);
-        const shinyPokemon = buscarShinyPokemon(shinyPokemons, nomeSemAsterisco);
+  listas.forEach(item => {
+    const nomeOriginal = item.textContent.trim(); // Captura o nome original com o *
+    const nomeSemAsterisco = nomeOriginal.replace('*', '').trim(); // Remove o * para busca
+    const img = item.querySelector('img');
 
-        if (img && pokemon && shinyPokemon && nomeOriginal.includes('*')) { // Verifica o nome original
-            let showShiny = false;
-            setInterval(() => {
-                img.style.transition = 'opacity 0.5s';
-                img.style.opacity = 0;
-                setTimeout(() => {
-                    img.src = showShiny ? shinyPokemon.img : pokemon.img;
-                    img.style.opacity = 1;
-                    showShiny = !showShiny;
-                }, 500);
-            }, 2500);
-        }
-    });
+    // Verifica se o Pokémon tem uma versão shiny e se o nome original tinha *
+    if (img && nomeOriginal.includes('*')) {
+      const pokemon = buscarPokemon(pokemons, nomeSemAsterisco);
+      const shinyPokemon = buscarShinyPokemon(shinyPokemons, nomeSemAsterisco);
+
+      if (pokemon && shinyPokemon) {
+        let showShiny = false;
+
+        // Alterna as imagens a cada 2.5 segundos
+        setInterval(() => {
+          img.style.transition = 'opacity 0.5s';
+          img.style.opacity = 0;
+
+          setTimeout(() => {
+            img.src = showShiny ? shinyPokemon.img : pokemon.img;
+            img.style.opacity = 1;
+            showShiny = !showShiny;
+          }, 500); // Tempo para a transição de opacidade
+        }, 2500); // Intervalo de alternância
+      }
+    }
+  });
 }
 
 function generatePokemonListItem(pokemon, shinyPokemon, nomeExibicao) { // Novo parâmetro
@@ -182,44 +189,52 @@ function generatePokemonListItem(pokemon, shinyPokemon, nomeExibicao) { // Novo 
 }
 
 async function processSpecificPokemonList() {
-    try {
-        const { pokemons, shinyPokemons } = await carregarPokemons();
+  try {
+    const { pokemons, shinyPokemons } = await carregarPokemons();
 
-        const pokemonLists = document.querySelectorAll('.pokemon-list');
+    const pokemonLists = document.querySelectorAll('.pokemon-list');
 
-        for (const pokemonListElement of pokemonLists) {
-            const pokemonNames = Array.from(pokemonListElement.getElementsByTagName('li'))
-                .map(li => li.textContent.trim());
+    for (const pokemonListElement of pokemonLists) {
+      const pokemonNames = Array.from(pokemonListElement.getElementsByTagName('li'))
+        .map(li => li.textContent.trim());
 
-            // Remover * para a filtragem
-            const pokemonNamesSemAsterisco = pokemonNames.map(name => name.replace('*', ''));
+      // Preserva a informação original sobre o *
+      const pokemonNamesComAsterisco = pokemonNames.map(name => ({
+        nome: name.replace('*', '').trim(),
+        temAsterisco: name.includes('*')
+      }));
 
-            const filteredPokemon = pokemons.filter(pokemon => {
-                return pokemonNamesSemAsterisco.includes(pokemon.nome.replace('*', '').trim());
-            });
+      const filteredPokemon = pokemons.filter(pokemon => {
+        return pokemonNamesComAsterisco.some(item => item.nome === pokemon.nome.trim());
+      });
 
-            const pokemonListHTML = filteredPokemon.map(pokemon => {
-                let nomeExibicao = pokemon.nome;
-                const shinyCorrespondente = shinyPokemons.find(shiny => shiny.nome.toLowerCase() === pokemon.nome.toLowerCase());
-                if (shinyCorrespondente) {
-                    nomeExibicao += '*'; // Adiciona * de volta se for shiny
-                }
-                const shinyPokemon = shinyPokemons.find(shiny => shiny.nome.toLowerCase() === pokemon.nome.toLowerCase());
-                return generatePokemonListItem(pokemon, shinyPokemon, nomeExibicao); // Passa o nome para exibição
-            }).join('');
+      const pokemonListHTML = filteredPokemon.map(pokemon => {
+        // Encontra o nome original para verificar se tinha *
+        const nomeOriginal = pokemonNamesComAsterisco.find(item => item.nome === pokemon.nome.trim());
+        const nomeExibicao = nomeOriginal.temAsterisco ? `${pokemon.nome}*` : pokemon.nome;
 
-            pokemonListElement.innerHTML = pokemonListHTML;
+        // Encontra o Pokémon shiny correspondente
+        const shinyPokemon = shinyPokemons.find(shiny => shiny.nome.toLowerCase() === pokemon.nome.toLowerCase());
 
-            if (!pokemonListElement.classList.contains('selvagens')) {
-                pokemonListElement.classList.add('selvagens');
-            }
-        }
+        // Gera o HTML do item da lista
+        return generatePokemonListItem(pokemon, shinyPokemon, nomeExibicao);
+      }).join('');
 
-        alternarImagens(pokemons, shinyPokemons);
+      // Atualiza o HTML da lista
+      pokemonListElement.innerHTML = pokemonListHTML;
 
-    } catch (error) {
-        console.error('Erro ao processar as listas de Pokémon:', error);
+      // Adiciona a classe 'selvagens' se não estiver presente
+      if (!pokemonListElement.classList.contains('selvagens')) {
+        pokemonListElement.classList.add('selvagens');
+      }
     }
+
+    // Alterna as imagens dos Pokémons shiny
+    alternarImagens(pokemons, shinyPokemons);
+
+  } catch (error) {
+    console.error('Erro ao processar as listas de Pokémon:', error);
+  }
 }
 
 processSpecificPokemonList();
