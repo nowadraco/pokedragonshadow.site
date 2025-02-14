@@ -118,30 +118,34 @@ function alternarImagens(pokemons, shinyPokemons) {
     const listas = document.querySelectorAll('.pokemon-list li');
 
     listas.forEach(item => {
-        const nomeOriginal = item.textContent.trim(); // Captura o nome original com o *
-        const nomeSemAsterisco = nomeOriginal.replace('*', '').trim(); // Remove o * para busca
+        const span = item.querySelector('span'); // Busca o <span> dentro do <li>
+        if (!span) return; // Sai se não encontrar o <span>
+
+        const nomeOriginal = span.textContent.trim(); // Captura o nome do Pokémon do <span>
+        const nomeSemAsterisco = nomeOriginal.replace('*', '').trim();
         const img = item.querySelector('img');
 
-        // Verifica se o Pokémon tem uma versão shiny e se o nome original tinha *
         if (img && nomeOriginal.includes('*')) {
-            const pokemon = buscarPokemon(pokemons, nomeSemAsterisco);
-            const shinyPokemon = buscarShinyPokemon(shinyPokemons, nomeSemAsterisco);
+            let pokemon = buscarPokemon(pokemons, nomeSemAsterisco);
+            let shinyPokemon = buscarShinyPokemon(shinyPokemons, nomeSemAsterisco);
 
-            if (pokemon && shinyPokemon) {
-                let showShiny = false;
-
-                // Alterna as imagens a cada 2.5 segundos
-                setInterval(() => {
-                    img.style.transition = 'opacity 0.5s';
-                    img.style.opacity = 0;
-
-                    setTimeout(() => {
-                        img.src = showShiny ? shinyPokemon.img : pokemon.img;
-                        img.style.opacity = 1;
-                        showShiny = !showShiny;
-                    }, 500); // Tempo para a transição de opacidade
-                }, 2500); // Intervalo de alternância
+            if (!pokemon || !shinyPokemon) {
+                img.src = 'placeholder.png';
+                return;
             }
+
+            let showShiny = false;
+
+            setInterval(() => {
+                img.style.transition = 'opacity 0.5s';
+                img.style.opacity = 0;
+
+                setTimeout(() => {
+                    img.src = showShiny ? shinyPokemon.img : pokemon.img;
+                    img.style.opacity = 1;
+                    showShiny = !showShiny;
+                }, 500);
+            }, 2500);
         }
     });
 }
@@ -178,14 +182,14 @@ function generatePokemonListItem(pokemon, shinyPokemon, nomeExibicao) { // Novo 
 
     return `<li class="Selvagem ${validTipos.map(t => t.toLowerCase()).join(' ')}" 
                 style="background: ${gradientBackground};">
-            <img class="imgSelvagem" src="${pokemon.img}" alt="${nomeExibicao}"> 
-            ${nomeExibicao}  </a> <div class="tipo-icons">${typeIcons}</div>
-            <div class="pc-info">PC: ${cpInfo.normal} - ${cpInfo.perfect}</div>
-            <div class="boost">
-                ${weatherIcons}
-                <div class="pc-boost"> ${cpBoost.normal} - ${cpBoost.perfect}</div>
-            </div>
-        </li>`;
+                <img class="imgSelvagem" src="${pokemon.img}" alt="${nomeExibicao}"> 
+                <span>${nomeExibicao}</span> <div class="tipo-icons">${typeIcons}</div>
+                <div class="pc-info">PC: ${cpInfo.normal} - ${cpInfo.perfect}</div>
+                <div class="boost">
+                    ${weatherIcons}
+                    <div class="pc-boost"> ${cpBoost.normal} - ${cpBoost.perfect}</div>
+                </div>
+            </li>`;
 }
 
 async function processSpecificPokemonList() {
