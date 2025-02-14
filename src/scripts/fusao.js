@@ -198,7 +198,6 @@ async function processSpecificPokemonList() {
             const pokemonNames = Array.from(pokemonListElement.getElementsByTagName('li'))
                 .map(li => li.textContent.trim());
 
-            // Preserva a informação original sobre o *
             const pokemonNamesComAsterisco = pokemonNames.map(name => ({
                 nome: name.replace('*', '').trim(),
                 temAsterisco: name.includes('*')
@@ -209,27 +208,21 @@ async function processSpecificPokemonList() {
             });
 
             const pokemonListHTML = filteredPokemon.map(pokemon => {
-                // Encontra o nome original para verificar se tinha *
                 const nomeOriginal = pokemonNamesComAsterisco.find(item => item.nome === pokemon.nome.trim());
                 const nomeExibicao = nomeOriginal.temAsterisco ? `${pokemon.nome}*` : pokemon.nome;
 
-                // Encontra o Pokémon shiny correspondente
                 const shinyPokemon = shinyPokemons.find(shiny => shiny.nome.toLowerCase() === pokemon.nome.toLowerCase());
 
-                // Gera o HTML do item da lista
                 return generatePokemonListItem(pokemon, shinyPokemon, nomeExibicao);
             }).join('');
 
-            // Atualiza o HTML da lista
             pokemonListElement.innerHTML = pokemonListHTML;
 
-            // Adiciona a classe 'selvagens' se não estiver presente
             if (!pokemonListElement.classList.contains('selvagens')) {
                 pokemonListElement.classList.add('selvagens');
             }
         }
 
-        // Alterna as imagens dos Pokémons shiny
         alternarImagens(pokemons, shinyPokemons);
 
     } catch (error) {
