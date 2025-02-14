@@ -16299,6 +16299,38 @@
   },
   {
     "dex": 248,
+    "nome": "Mega Tyranitar",
+    "idNome": "Mega Tyranitar",
+    "statusBase": {
+      "atk": 251,
+      "def": 207,
+      "hp": 225
+    },
+    "tipos": [
+      "Pedra",
+      "sombrio"
+    ],
+    "fastMoves": [
+      "BITE",
+      "IRON_TAIL",
+      "SMACK_DOWN"
+    ],
+    "chargedMoves": [
+      "CRUNCH",
+      "FIRE_BLAST",
+      "STONE_EDGE",
+      "BRUTAL_SWING"
+    ],
+    "buddyDistancia": 5,
+    "custoTerceiroMove": 75000,
+    "familia": {
+      "id": "FAMILIA_LARVITAR",
+      "parente": "pupitar"
+    },
+    "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/pokemon_icon_248_00_shiny.png"
+  },
+  {
+    "dex": 248,
     "nome": "Tyranitar (Mega)",
     "idNome": "tyranitar_mega",
     "statusBase": {
@@ -46302,8 +46334,8 @@
   },
   {
     "dex": 905,
-    "nome": "Enamorus (Incarnate)",
-    "idNome": "enamorus_incarnate",
+    "nome": "Enamorus Forma Materializada",
+    "idNome": "Enamorus Forma Materializada",
     "statusBase": {
       "atk": 281,
       "def": 162,
@@ -46324,7 +46356,8 @@
       "GRASS_KNOT"
     ],
     "buddyDistancia": 20,
-    "custoTerceiroMove": 100000
+    "custoTerceiroMove": 100000,
+    "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/Addressable%20Assets/pm905.fINCARNATE.icon.png"
   },
   {
     "dex": 905,
