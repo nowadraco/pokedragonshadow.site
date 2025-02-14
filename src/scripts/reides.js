@@ -1,7 +1,7 @@
 async function carregarPokemons() {
     try {
-        const response = await fetch('https://raw.githubusercontent.com/nowadraco/pokedragonshadow.site/refs/heads/main/src/json_files/output.json');
-        const shinyResponse = await fetch('https://raw.githubusercontent.com/nowadraco/pokedragonshadow.site/refs/heads/main/src/json_files/output_shiny.json');
+        const response = await fetch('https://raw.githubusercontent.com/nowadraco/pokedragonshadow.site/refs/heads/main/src/json_files/poke_reide.json');
+        const shinyResponse = await fetch('https://raw.githubusercontent.com/nowadraco/pokedragonshadow.site/refs/heads/main/src/json_files/poke_reide_shiny.json');
         const pokemons = await response.json();
         const shinyPokemons = await shinyResponse.json();
         return { pokemons, shinyPokemons };

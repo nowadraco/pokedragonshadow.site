@@ -123,7 +123,7 @@ function generatePokemonListItem(pokemon) {
     ).join('');
 
     return `<li class="Selvagem ${validTipos.map(t => t.toLowerCase()).join(' ')}" 
-               style="background: ${gradientBackground};">
+            style="background: ${gradientBackground};">
         <img class="imgSelvagem" src="${pokemon.img}" alt="${pokemon.nome}"> 
         ${pokemon.nome}
         <div class="tipo-icons">${typeIcons}</div>
