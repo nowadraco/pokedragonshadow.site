@@ -81,8 +81,8 @@ Implementar páginas adicionais para o site "PokeDragonShadow" com informações
 
 **Estrutura da Página:**
 - [x] **Título:** "reides"
-- [ ] **Seção Principal:**
-  - [ ] Lista de reides em andamento, incluindo data.
+- [x] **Seção Principal:**
+  - [x] Lista de reides em andamento, incluindo data.
 - [ ] **Detalhes:**
   - [ ] Informações sobre os chefes de reide, estratégias recomendadas.
 - [ ] **Filtros:**
