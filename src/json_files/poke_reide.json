@@ -39318,8 +39318,8 @@
   },
   {
     "dex": 720,
-    "nome": "Hoopa (Unbound)",
-    "idNome": "hoopa_unbound",
+    "nome": "Hoopa Libertado",
+    "idNome": "Hoopa_Libertado",
     "statusBase": {
       "atk": 311,
       "def": 191,
@@ -39339,7 +39339,8 @@
       "Psíquico"
     ],
     "buddyDistancia": 20,
-    "custoTerceiroMove": 100000
+    "custoTerceiroMove": 100000,
+    "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/Addressable%20Assets/pm720.fUNBOUND.icon.png"
   },
   {
     "dex": 721,
