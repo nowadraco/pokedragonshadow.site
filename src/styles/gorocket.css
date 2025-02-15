@@ -1,0 +1,44 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+.gorocket {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.gorocket img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.gorocket span {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.gorocket ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.gorocket ul li {
+    padding: 5px 0;
+    font-size: 1.2em;
+}
+
+.gorocket ul li:not(:last-child) {
+    border-bottom: 1px solid #ddd;
+}
