@@ -15,7 +15,7 @@
     font-family: Arial, sans-serif;
 }
 
-.gorocket > div {
+.gorocket>div {
     margin-bottom: 10px;
 }
 
@@ -50,4 +50,18 @@
 
 .pokemon-list li:not(:last-child) {
     border-bottom: 1px solid #ddd;
+}
+
+.gorocket li img {
+    background-image: url('https://raw.githubusercontent.com/nowadraco/pokedragonshadow.site/c3027920e2d9674426a728d292ff8ce08209b2d2/src/imagens/assets/shadow.png');
+    background-size: cover;
+    background-position: center;
+}
+
+ul.shadow {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }

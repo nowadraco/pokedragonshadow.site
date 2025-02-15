@@ -1,13 +1,11 @@
 async function carregarPokemons() {
     try {
         const response = await fetch('https://nowadraco.github.io/pokedragonshadow.site/src/json_files/pok_selvagens.json');
-        const shinyResponse = await fetch('https://nowadraco.github.io/pokedragonshadow.site/src/json_files/pok_selvagens_shiny.json');
         const pokemons = await response.json();
-        const shinyPokemons = await shinyResponse.json();
-        return { pokemons, shinyPokemons };
+        return { pokemons };
     } catch (error) {
         console.error('Erro ao carregar o arquivo JSON:', error);
-        return { pokemons: [], shinyPokemons: [] };
+        return { pokemons: [] };
     }
 }
 
@@ -36,7 +34,7 @@ function getTypeColor(tipo) {
     }
 }
 
-function criarElementoPokemon(pokemon, shinyPokemon) {
+function criarElementoPokemon(pokemon) {
     const li = document.createElement('li');
     let classList = `Selvagem ${pokemon.tipo1.toLowerCase()}`;
     if (pokemon.tipo2) {
@@ -66,44 +64,15 @@ function buscarPokemon(pokemons, nome) {
     return pokemons.find(pokemon => pokemon.nome.toLowerCase() === nomeNormalizado);
 }
 
-function buscarShinyPokemon(shinyPokemons, nome) {
-    const nomeNormalizado = nome.replace('*', '').toLowerCase();
-    return shinyPokemons.find(shiny => shiny.nome.toLowerCase() === nomeNormalizado);
-}
-
-function alternarImagens(pokemons, shinyPokemons) {
-    const listas = document.querySelectorAll('.pokemon-list li');
-
-    listas.forEach(item => {
-        const nome = item.textContent.trim();
-        const img = item.querySelector('img');
-        const pokemon = buscarPokemon(pokemons, nome);
-        const shinyPokemon = buscarShinyPokemon(shinyPokemons, nome);
-
-        if (img && pokemon && shinyPokemon && nome.includes('*')) {
-            let showShiny = false;
-            setInterval(() => {
-                img.style.transition = 'opacity 0.5s';
-                img.style.opacity = 0;
-                setTimeout(() => {
-                    img.src = showShiny ? shinyPokemon.img : pokemon.img;
-                    img.style.opacity = 1;
-                    showShiny = !showShiny;
-                }, 500);
-            }, 2500);
-        }
-    });
-}
-
 async function preencherLista() {
-    const { pokemons, shinyPokemons } = await carregarPokemons();
+    const { pokemons } = await carregarPokemons();
     const substitute = buscarPokemon(pokemons, 'substitute') || {
         nome: 'Substitute',
         tipo1: 'normal',
         img: './path/to/substitute-image.png'
     };
 
-    const listas = document.querySelectorAll('.pokemon-list');
+    const listas = document.querySelectorAll('.gorocket');
 
     listas.forEach(lista => {
         const itens = lista.querySelectorAll('li');
@@ -111,20 +80,17 @@ async function preencherLista() {
         itens.forEach(item => {
             const nome = item.textContent.trim();
             let pokemon = buscarPokemon(pokemons, nome);
-            let shinyPokemon = buscarShinyPokemon(shinyPokemons, nome);
 
             if (!pokemon) {
                 pokemon = substitute;
             }
 
-            const novoItem = criarElementoPokemon(pokemon, shinyPokemon);
+            const novoItem = criarElementoPokemon(pokemon);
             if (nome.includes('*')) {
                 novoItem.lastChild.nodeValue = ` ${nome}`;
             }
             item.replaceWith(novoItem);
         });
-
-        alternarImagens(pokemons, shinyPokemons);
     });
 }
 
