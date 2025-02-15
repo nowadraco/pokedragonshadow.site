@@ -15,6 +15,10 @@
     font-family: Arial, sans-serif;
 }
 
+.gorocket > div {
+    margin-bottom: 10px;
+}
+
 .gorocket img {
     max-width: 100%;
     height: auto;
@@ -23,22 +27,27 @@
 
 .gorocket span {
     display: block;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.gorocket span:first-child {
     font-size: 1.5em;
     margin-top: 10px;
-    font-weight: bold;
 }
 
-.gorocket ul {
+.pokemon-list {
     list-style-type: none;
     padding: 0;
-    margin: 10px 0;
+    margin: 0;
 }
 
-.gorocket ul li {
+.pokemon-list li {
     padding: 5px 0;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
-.gorocket ul li:not(:last-child) {
+.pokemon-list li:not(:last-child) {
     border-bottom: 1px solid #ddd;
 }
