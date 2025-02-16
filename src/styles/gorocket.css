@@ -20,10 +20,9 @@
 }
 
 .gorocket img {
-    max-width: 100px; /* Defina a largura máxima da imagem */
+    max-width: 100px;
     height: auto;
     border-radius: 50%;
-    margin-right: 10px; /* Espaço entre a imagem e o conteúdo do cartão */
 }
 
 .card {
@@ -85,4 +84,26 @@ ul.shadow {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+.shadow img {
+    max-width: 50%;
+    border-radius: 5px;
+}
+
+.shadow .pokemon-nome {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.shadow {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    width: 150px;
+    transition: transform 0.2s;
 }

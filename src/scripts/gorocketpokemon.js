@@ -36,7 +36,7 @@ function getTypeColor(tipo) {
 
 function criarElementoPokemon(pokemon) {
     const li = document.createElement('li');
-    let classList = `Selvagem ${pokemon.tipo1.toLowerCase()}`;
+    let classList = `Shadow ${pokemon.tipo1.toLowerCase()}`;
     if (pokemon.tipo2) {
         classList += ` ${pokemon.tipo2.toLowerCase()}`;
     }
@@ -49,15 +49,20 @@ function criarElementoPokemon(pokemon) {
     }
 
     const img = document.createElement('img');
+    img.classList.add('imgSelvagem');
     img.src = pokemon.img;
     img.alt = pokemon.nome;
-    img.classList.add('imgSelvagem');
 
+    const span = document.createElement('span');
+    span.classList.add('pokemon-nome');
+    span.textContent = pokemon.nome;
+    
     li.appendChild(img);
-    li.appendChild(document.createTextNode(` ${pokemon.nome}`));
+    li.appendChild(span);
 
     return li;
 }
+
 
 function buscarPokemon(pokemons, nome) {
     const nomeNormalizado = nome.replace('*', '').toLowerCase();
