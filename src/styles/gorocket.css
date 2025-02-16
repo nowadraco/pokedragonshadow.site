@@ -20,21 +20,42 @@
 }
 
 .gorocket img {
-    max-width: 100%;
+    max-width: 100px; /* Defina a largura máxima da imagem */
     height: auto;
     border-radius: 50%;
+    margin-right: 10px; /* Espaço entre a imagem e o conteúdo do cartão */
 }
 
-.gorocket span {
-    display: block;
+.card {
+    display: flex;
+    align-items: center;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.card .name {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.card .phrase {
+    font-size: 1.2em;
+}
+
+.pokemon-info {
+    display: flex;
+    align-items: center;
+}
+
+.pokemon-number {
     font-size: 1.2em;
     font-weight: bold;
-    margin-top: 5px;
-}
-
-.gorocket span:first-child {
-    font-size: 1.5em;
-    margin-top: 10px;
+    margin-right: 10px;
 }
 
 .pokemon-list {
