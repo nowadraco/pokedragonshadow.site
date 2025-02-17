@@ -1,23 +1,27 @@
 let pokemonData = [];
+let filteredPokemonData = [];
 
 const container = document.getElementById('pokemon-container');
 const prevButton = document.getElementById('prev-button');
 const nextButton = document.getElementById('next-button');
+const searchBar = document.getElementById('search-bar');
 
 let currentPage = 0;
 const itemsPerPage = 100;
+
+searchBar.addEventListener('input', () => {
+    const searchTerm = searchBar.value.toLowerCase();
+    filteredPokemonData = pokemonData.filter(pokemon => pokemon.nome.toLowerCase().includes(searchTerm));
+    currentPage = 0; // Reset para a primeira página da pesquisa
+    displayPage(currentPage);
+});
 
 async function loadPokemonData() {
     try {
         const response = await fetch('https://raw.githubusercontent.com/nowadraco/pokedragonshadow.site/refs/heads/main/src/json_files/poke_reide.json');
         const data = await response.json();
-        pokemonData = data.map(pokemon => ({
-            id: pokemon.dex,
-            nome: pokemon.nome,
-            tipo1: pokemon.tipos[0],
-            tipo2: pokemon.tipos[1] || null,
-            img: pokemon.img
-        }));
+        pokemonData = data;
+        filteredPokemonData = pokemonData; // Inicia com todos os dados
         displayPage(currentPage);
     } catch (error) {
         console.error('Erro ao carregar os dados do JSON:', error);
@@ -28,36 +32,41 @@ function displayPage(page) {
     container.innerHTML = '';
     const start = page * itemsPerPage;
     const end = start + itemsPerPage;
-    const pageData = pokemonData.slice(start, end);
+    const pageData = filteredPokemonData.slice(start, end);
 
     pageData.forEach(pokemon => {
         const pokemonElement = document.createElement('div');
         pokemonElement.classList.add('pokemon');
 
         // Adiciona cores de background baseadas nos tipos
-        if (pokemon.tipo2) {
-            // Combina duas cores para dois tipos
-            pokemonElement.style.setProperty('--tipo1-color', getTypeColor(pokemon.tipo1));
-            pokemonElement.style.setProperty('--tipo2-color', getTypeColor(pokemon.tipo2));
+        if (pokemon.tipos && pokemon.tipos[1]) {
+            pokemonElement.style.setProperty('--tipo1-color', getTypeColor(pokemon.tipos[0]));
+            pokemonElement.style.setProperty('--tipo2-color', getTypeColor(pokemon.tipos[1]));
             pokemonElement.classList.add('combinacao');
         } else {
-            // Usa uma única cor para um tipo
-            pokemonElement.style.backgroundColor = getTypeColor(pokemon.tipo1);
+            pokemonElement.style.backgroundColor = getTypeColor(pokemon.tipos[0]);
         }
 
         pokemonElement.innerHTML = `
             <img src="${pokemon.img}" alt="${pokemon.nome}">
             <h2>${pokemon.nome}</h2>
-            <p>ID: ${pokemon.id}</p>
-            <p>Tipo 1: ${pokemon.tipo1}</p>
-            ${pokemon.tipo2 ? `<p>Tipo 2: ${pokemon.tipo2}</p>` : ''}
+            <p>ID: ${pokemon.dex}</p>
+            <p>Tipo 1: ${pokemon.tipos[0]}</p>
+            ${pokemon.tipos[1] ? `<p>Tipo 2: ${pokemon.tipos[1]}</p>` : ''}
+            <p>Atk: ${pokemon.statusBase.atk}</p>
+            <p>Def: ${pokemon.statusBase.def}</p>
+            <p>HP: ${pokemon.statusBase.hp}</p>
+            <p>Fast Moves: ${pokemon.fastMoves.join(', ')}</p>
+            <p>Charged Moves: ${pokemon.chargedMoves.join(', ')}</p>
+            <p>Buddy Distance: ${pokemon.buddyDistancia} km</p>
+            <p>Cost of Third Move: ${pokemon.custoTerceiroMove} candy</p>
         `;
 
         container.appendChild(pokemonElement);
     });
 
     prevButton.disabled = page === 0;
-    nextButton.disabled = end >= pokemonData.length;
+    nextButton.disabled = end >= filteredPokemonData.length;
 }
 
 // Função para obter a cor do tipo
@@ -93,7 +102,7 @@ prevButton.addEventListener('click', () => {
 });
 
 nextButton.addEventListener('click', () => {
-    if ((currentPage + 1) * itemsPerPage < pokemonData.length) {
+    if ((currentPage + 1) * itemsPerPage < filteredPokemonData.length) {
         currentPage++;
         displayPage(currentPage);
     }
