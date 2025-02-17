@@ -47,8 +47,11 @@ function displayPage(page) {
             pokemonElement.style.backgroundColor = getTypeColor(pokemon.tipos[0]);
         }
 
+        // Verifica se o nome contém "Shadow" e adiciona a classe `shadow` na imagem
+        const imgClass = pokemon.nome.includes('Shadow') ? 'shadow' : '';
+
         pokemonElement.innerHTML = `
-            <img src="${pokemon.img}" alt="${pokemon.nome}">
+            <img src="${pokemon.img}" alt="${pokemon.nome}" class="${imgClass}">
             <h2>${pokemon.nome}</h2>
             <p>ID: ${pokemon.dex}</p>
             <p>Tipo 1: ${pokemon.tipos[0]}</p>

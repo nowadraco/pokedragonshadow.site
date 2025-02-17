@@ -66,3 +66,9 @@ button:disabled {
 .combinacao {
   background: linear-gradient(to right, var(--tipo1-color), var(--tipo2-color));
 }
+
+.shadow {
+    background-image: url('https://raw.githubusercontent.com/nowadraco/pokedragonshadow.site/c3027920e2d9674426a728d292ff8ce08209b2d2/src/imagens/assets/shadow.png');
+    background-size: cover;
+    background-position: center;
+}
