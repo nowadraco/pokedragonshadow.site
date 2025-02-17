@@ -1,5 +1,37 @@
 [
   {
+    "dex": 0,
+    "nome": "Substitute",
+    "idNome": "Substitute",
+    "statusBase": {
+      "atk": 0,
+      "def": 0,
+      "hp": 0
+    },
+    "tipos": [
+      "substitute",
+      "null"
+    ],
+    "fastMoves": [
+      "null",
+      "null"
+    ],
+    "chargedMoves": [
+      "null",
+      "null",
+      "null"
+    ],
+    "buddyDistancia": 0,
+    "custoTerceiroMove": 0,
+    "familia": {
+      "id": "substitute",
+      "evolucao": [
+        "substitute"
+      ]
+    },
+    "img": "/src/imagens/substitute.png"
+  },
+  {
     "dex": 1,
     "nome": "Bulbasaur",
     "idNome": "bulbasaur",

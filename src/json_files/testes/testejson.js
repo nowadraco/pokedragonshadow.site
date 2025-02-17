@@ -9,8 +9,15 @@ const itemsPerPage = 100;
 
 async function loadPokemonData() {
     try {
-        const response = await fetch('/src/json_files/pok_selvagens.json');
-        pokemonData = await response.json();
+        const response = await fetch('https://raw.githubusercontent.com/nowadraco/pokedragonshadow.site/refs/heads/main/src/json_files/poke_reide.json');
+        const data = await response.json();
+        pokemonData = data.map(pokemon => ({
+            id: pokemon.dex,
+            nome: pokemon.nome,
+            tipo1: pokemon.tipos[0],
+            tipo2: pokemon.tipos[1] || null,
+            img: pokemon.img
+        }));
         displayPage(currentPage);
     } catch (error) {
         console.error('Erro ao carregar os dados do JSON:', error);
@@ -28,7 +35,7 @@ function displayPage(page) {
         pokemonElement.classList.add('pokemon');
 
         // Adiciona cores de background baseadas nos tipos
-        if (pokemon.tipo2 && pokemon.tipo2.toLowerCase() !== 'null') {
+        if (pokemon.tipo2) {
             // Combina duas cores para dois tipos
             pokemonElement.style.setProperty('--tipo1-color', getTypeColor(pokemon.tipo1));
             pokemonElement.style.setProperty('--tipo2-color', getTypeColor(pokemon.tipo2));
@@ -43,7 +50,7 @@ function displayPage(page) {
             <h2>${pokemon.nome}</h2>
             <p>ID: ${pokemon.id}</p>
             <p>Tipo 1: ${pokemon.tipo1}</p>
-            ${pokemon.tipo2 && pokemon.tipo2.toLowerCase() !== 'null' ? `<p>Tipo 2: ${pokemon.tipo2}</p>` : ''}
+            ${pokemon.tipo2 ? `<p>Tipo 2: ${pokemon.tipo2}</p>` : ''}
         `;
 
         container.appendChild(pokemonElement);

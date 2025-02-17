@@ -1,5 +1,5 @@
 // URL do arquivo JSON
-const url = 'https://raw.githubusercontent.com/nowadraco/pokedragonshadow.site/refs/heads/main/src/json_files/output.json';
+const url = 'https://raw.githubusercontent.com/nowadraco/pokedragonshadow.site/refs/heads/main/src/json_files/poke_reide.json';
 
 // Função para carregar a lista de Pokémon e preencher o dropdown
 function loadPokemonList() {
