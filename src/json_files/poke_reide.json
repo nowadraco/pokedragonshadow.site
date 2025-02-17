@@ -220,7 +220,8 @@
     "familia": {
       "id": "FAMILIA_BULBASAUR",
       "parente": "ivysaur"
-    }
+    },
+    "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/pokemon_icon_003_00.png"
   },
   {
     "dex": 3,
