@@ -250,3 +250,13 @@ ul.shadow {
     background-color: #FFFFFF;
     color: #000;
 }
+
+.weaknesses-list {
+    display: none;
+    list-style-type: none;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+}

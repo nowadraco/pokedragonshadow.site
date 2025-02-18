@@ -236,10 +236,10 @@
                     </ul>
                 </div>
             </div>
-            
+
         </div>
-        
-        
+
+
         <button id="scrollToTopBtn"></button>
     </main>
     <section class="encartes">
@@ -264,6 +264,42 @@
     <script src="../../../src/scripts/ultimolink.js"></script>
     <script src="../../../src/scripts/gorocketpokemon.js"></script>
 
+    <script>
+        document.querySelectorAll('.shadow li').forEach(function (pokemon) {
+            pokemon.addEventListener('click', function () {
+                // Remove existing weakness lists
+                document.querySelectorAll('.weaknesses-list').forEach(function (list) {
+                    list.remove();
+                });
+
+                // Get weaknesses from data attributes
+                const doubleWeaknesses = pokemon.getAttribute('data-double-weaknesses');
+                const singleWeaknesses = pokemon.getAttribute('data-single-weaknesses');
+
+                // Create weaknesses list
+                const weaknessesList = document.createElement('ul');
+                weaknessesList.classList.add('weaknesses-list');
+
+                if (doubleWeaknesses) {
+                    const doubleWeaknessesItem = document.createElement('li');
+                    doubleWeaknessesItem.textContent = 'Fraquezas Duplas: ' + doubleWeaknesses;
+                    weaknessesList.appendChild(doubleWeaknessesItem);
+                }
+
+                if (singleWeaknesses) {
+                    const singleWeaknessesItem = document.createElement('li');
+                    singleWeaknessesItem.textContent = 'Fraquezas Simples: ' + singleWeaknesses;
+                    weaknessesList.appendChild(singleWeaknessesItem);
+                }
+
+                // Append weaknesses list to the Pokemon list item
+                pokemon.appendChild(weaknessesList);
+
+                // Show the weaknesses list
+                weaknessesList.style.display = 'block';
+            });
+        });
+    </script>
 
 </body>
 

@@ -1,3 +1,4 @@
+
 async function carregarPokemons() {
     try {
         const response = await fetch('https://nowadraco.github.io/pokedragonshadow.site/src/json_files/pok_selvagens.json');
@@ -36,7 +37,7 @@ function getTypeColor(tipo) {
 
 function criarElementoPokemon(pokemon) {
     const li = document.createElement('li');
-    let classList = `Shadow ${pokemon.tipo1.toLowerCase()}`;
+    let classList = `shadow ${pokemon.tipo1.toLowerCase()}`;
     if (pokemon.tipo2) {
         classList += ` ${pokemon.tipo2.toLowerCase()}`;
     }
@@ -62,7 +63,6 @@ function criarElementoPokemon(pokemon) {
 
     return li;
 }
-
 
 function buscarPokemon(pokemons, nome) {
     const nomeNormalizado = nome.replace('*', '').toLowerCase();
@@ -97,6 +97,43 @@ async function preencherLista() {
             item.replaceWith(novoItem);
         });
     });
+
+    // Implementando a funcionalidade de exibir fraquezas ao clicar
+    document.querySelectorAll('.shadow li').forEach(function(pokemon) {
+        pokemon.addEventListener('click', function() {
+            // Remove existing weakness lists
+            document.querySelectorAll('.weaknesses-list').forEach(function(list) {
+                list.remove();
+            });
+            
+            // Get weaknesses from data attributes
+            const doubleWeaknesses = pokemon.getAttribute('data-double-weaknesses');
+            const singleWeaknesses = pokemon.getAttribute('data-single-weaknesses');
+
+            // Create weaknesses list
+            const weaknessesList = document.createElement('ul');
+            weaknessesList.classList.add('weaknesses-list');
+
+            if (doubleWeaknesses) {
+                const doubleWeaknessesItem = document.createElement('li');
+                doubleWeaknessesItem.textContent = 'Fraquezas Duplas: ' + doubleWeaknesses;
+                weaknessesList.appendChild(doubleWeaknessesItem);
+            }
+
+            if (singleWeaknesses) {
+                const singleWeaknessesItem = document.createElement('li');
+                singleWeaknessesItem.textContent = 'Fraquezas Simples: ' + singleWeaknesses;
+                weaknessesList.appendChild(singleWeaknessesItem);
+            }
+
+            // Append weaknesses list to the Pokemon list item
+            pokemon.appendChild(weaknessesList);
+
+            // Show the weaknesses list
+            weaknessesList.style.display = 'block';
+        });
+    });
 }
 
 window.onload = preencherLista;
+
