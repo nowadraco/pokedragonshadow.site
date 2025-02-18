@@ -1,3 +1,17 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+/* Estilização do container */
 .container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -25,36 +39,67 @@
     border-radius: 50%;
 }
 
+/* Estilização do card */
 .card {
     display: flex;
     align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+    width: 100%;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 20px;
 }
 
 .card-content {
     display: flex;
     flex-direction: column;
     text-align: left;
+    padding: 20px;
 }
 
 .card .name {
     font-size: 1.5em;
     font-weight: bold;
     margin-bottom: 5px;
+    color: #333;
 }
 
 .card .phrase {
     font-size: 1.2em;
+    color: #777;
 }
 
+/* Estilização dos números e listas */
 .pokemon-info {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin: 10px;
+    width: 100%;
 }
 
 .pokemon-number {
-    font-size: 1.2em;
+    font-size: 1.5em;
     font-weight: bold;
+    color: #555;
+    display: block;
+    text-align: center;
     margin-right: 10px;
 }
 
@@ -67,24 +112,30 @@
 .pokemon-list li {
     padding: 5px 0;
     font-size: 1em;
+    text-align: center;
 }
 
 .pokemon-list li:not(:last-child) {
     border-bottom: 1px solid #ddd;
 }
 
-.gorocket li img {
-    background-image: url('https://raw.githubusercontent.com/nowadraco/pokedragonshadow.site/c3027920e2d9674426a728d292ff8ce08209b2d2/src/imagens/assets/shadow.png');
-    background-size: cover;
-    background-position: center;
-}
-
+/* Estilização das sombras */
 ul.shadow {
     list-style-type: none;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+.shadow {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    width: 150px;
+    transition: transform 0.2s;
 }
 
 .shadow img {
@@ -99,38 +150,35 @@ ul.shadow {
     color: #fff;
 }
 
-.shadow {
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px;
-    text-align: center;
-    width: 150px;
-    transition: transform 0.2s;
-}
-
+/* Cores dos tipos */
 .normal {
     background-color: #A8A77A;
+    color: #FFFFFF;
 }
 
 .fogo {
     background-color: #FF4500;
+    color: #FFFFFF;
 }
 
 .agua {
     background-color: #1E90FF;
+    color: #FFFFFF;
 }
 
 .eletrico {
     background-color: #F7D02C;
+    color: #FFFFFF;
 }
 
 .planta {
     background-color: #32CD32;
+    color: #FFFFFF;
 }
 
 .gelo {
     background-color: #96D9D6;
+    color: #FFFFFF;
 }
 
 .lutador {
@@ -145,22 +193,27 @@ ul.shadow {
 
 .terrestre {
     background-color: #E2BF65;
+    color: #FFFFFF;
 }
 
 .voador {
     background-color: #A98FF3;
+    color: #FFFFFF;
 }
 
 .psiquico {
     background-color: #F95587;
+    color: #FFFFFF;
 }
 
 .inseto {
     background-color: #A6B91A;
+    color: #FFFFFF;
 }
 
 .pedra {
     background-color: #B6A136;
+    color: #FFFFFF;
 }
 
 .fantasma {
@@ -180,10 +233,12 @@ ul.shadow {
 
 .aco {
     background-color: #B7B7CE;
+    color: #FFFFFF;
 }
 
 .fada {
     background-color: #D685AD;
+    color: #FFFFFF;
 }
 
 .lider {
@@ -193,4 +248,5 @@ ul.shadow {
 
 .default {
     background-color: #FFFFFF;
+    color: #000;
 }
