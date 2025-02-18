@@ -108,3 +108,89 @@ ul.shadow {
     width: 150px;
     transition: transform 0.2s;
 }
+
+.normal {
+    background-color: #A8A77A;
+}
+
+.fogo {
+    background-color: #FF4500;
+}
+
+.agua {
+    background-color: #1E90FF;
+}
+
+.eletrico {
+    background-color: #F7D02C;
+}
+
+.planta {
+    background-color: #32CD32;
+}
+
+.gelo {
+    background-color: #96D9D6;
+}
+
+.lutador {
+    background-color: #C22E28;
+    color: #FFFFFF;
+}
+
+.venenoso {
+    background-color: #A33EA1;
+    color: #FFFFFF;
+}
+
+.terrestre {
+    background-color: #E2BF65;
+}
+
+.voador {
+    background-color: #A98FF3;
+}
+
+.psiquico {
+    background-color: #F95587;
+}
+
+.inseto {
+    background-color: #A6B91A;
+}
+
+.pedra {
+    background-color: #B6A136;
+}
+
+.fantasma {
+    background-color: #735797;
+    color: #FFFFFF;
+}
+
+.dragao {
+    background-color: #6F35FC;
+    color: #FFFFFF;
+}
+
+.sombrio {
+    background-color: #705746;
+    color: #FFFFFF;
+}
+
+.aco {
+    background-color: #B7B7CE;
+}
+
+.fada {
+    background-color: #D685AD;
+}
+
+.lider {
+    background-color: #000;
+    color: #FFFFFF;
+}
+
+.default {
+    background-color: #FFFFFF;
+}
