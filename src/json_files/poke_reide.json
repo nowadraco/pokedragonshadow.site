@@ -27133,6 +27133,38 @@
   },
   {
     "dex": 445,
+    "nome": "Mega Garchomp",
+    "idNome": "Mega Garchomp",
+    "statusBase": {
+      "atk": 261,
+      "def": 193,
+      "hp": 239
+    },
+    "tipos": [
+      "Dragão",
+      "Terrestre"
+    ],
+    "fastMoves": [
+      "DRAGON_TAIL",
+      "MUD_SHOT"
+    ],
+    "chargedMoves": [
+      "EARTHQUAKE",
+      "FIRE_BLAST",
+      "OUTRAGE",
+      "SAND_TOMB",
+      "EARTH_POWER"
+    ],
+    "buddyDistancia": 5,
+    "custoTerceiroMove": 75000,
+    "familia": {
+      "id": "FAMILIA_GIBLE",
+      "parente": "gabite"
+    },
+    "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/Addressable%20Assets/pm445.fMEGA.icon.png"
+  },
+    {
+    "dex": 445,
     "nome": "Garchomp",
     "idNome": "garchomp",
     "statusBase": {
