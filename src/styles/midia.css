@@ -139,10 +139,6 @@
     max-width: 250px;
   }
 
-  ul.selvagens {
-    flex-direction: column;
-  }
-
   li.Selvagem {
     width: 200px;
     font-size: 20px;
