@@ -655,3 +655,25 @@ li.Selvagem {
 .tipo-icons img{
   width:20px;
 }
+
+details {
+  margin-bottom: 10px;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: bold;
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+summary::before {
+  content: "▶";
+  margin-right: 10px;
+  font-size: 12px;
+}
+
+details[open] summary::before {
+  content: "▼";
+}

@@ -197,6 +197,13 @@
 },
 {
 "id": 25,
+"nome": "Pikachu Libre",
+"img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/Addressable%20Assets/pm25.fVS_2019.s.icon.png",
+"tipo1": "Elétrico",
+"tipo2": "null"
+},
+{
+"id": 25,
 "nome": "Pikachu com um gorro com flocos de neve",
 "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/Addressable%20Assets/pm25.cWINTER_2018.g2.s.icon.png",
 "tipo1": "Elétrico",
