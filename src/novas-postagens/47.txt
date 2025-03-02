@@ -291,6 +291,7 @@ Diminuição do custo de energia
 Descarga
 Batalhas de Treinador: 65 → 55 pontos
 Diminuição do custo de energia
+
 Atualizações de disponibilidade de ataque
 
 Piloswine
