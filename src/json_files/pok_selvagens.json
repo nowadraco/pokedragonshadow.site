@@ -1988,6 +1988,13 @@
 "tipo2": "null"
 },
 {
+"id": 243,
+"nome": "Raikou Dinamax",
+"img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/pokemon_icon_243_00.png",
+"tipo1": "Elétrico",
+"tipo2": "null"
+},
+{
 "id": 244,
 "nome": "Entei",
 "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/pokemon_icon_244_00.png",
