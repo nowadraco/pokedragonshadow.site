@@ -677,3 +677,7 @@ summary::before {
 details[open] summary::before {
   content: "▼";
 }
+
+.icone-pvp{
+  max-width: 30px;
+}
