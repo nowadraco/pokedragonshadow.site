@@ -210,6 +210,13 @@
 "tipo2": "null"
 },
 {
+"id": 26,
+"nome": "Raichu de Alola",
+"img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/Addressable%20Assets/pm26.fALOLA.s.icon.png",
+"tipo1": "Elétrico",
+"tipo2": "null"
+},
+{
 "id": 27,
 "nome": "Sandshrew",
 "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/pokemon_icon_027_00_shiny.png",
@@ -1256,6 +1263,13 @@
 "id": 157,
 "nome": "Typhlosion",
 "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/pokemon_icon_157_00_shiny.png",
+"tipo1": "Fogo",
+"tipo2": "null"
+},
+{
+"id": 157,
+"nome": "Typhlosion de Hisui",
+"img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/Addressable%20Assets/pm157.fHISUIAN.s.icon.png",
 "tipo1": "Fogo",
 "tipo2": "null"
 },
@@ -6188,6 +6202,13 @@
 "tipo2": "null"
 },
 {
+"id": 810,
+"nome": "Grookey Dinamax",
+"img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/Addressable%20Assets/pm810.s.icon.png",
+"tipo1": "Planta",
+"tipo2": "null"
+},
+{
 "id": 811,
 "nome": "Thwackey",
 "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/Addressable%20Assets/pm811.s.icon.png",
@@ -6209,6 +6230,13 @@
 "tipo2": "null"
 },
 {
+"id": 813,
+"nome": "Scorbunny Dinamax",
+"img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/Addressable%20Assets/pm813.s.icon.png",
+"tipo1": "Fogo",
+"tipo2": "null"
+},
+{
 "id": 814,
 "nome": "Raboot",
 "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/Addressable%20Assets/pm814.s.icon.png",
@@ -6225,6 +6253,13 @@
 {
 "id": 816,
 "nome": "Sobble",
+"img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/Addressable%20Assets/pm816.s.icon.png",
+"tipo1": "Água",
+"tipo2": "null"
+},
+{
+"id": 816,
+"nome": "Sobble Dinamax",
 "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/Addressable%20Assets/pm816.s.icon.png",
 "tipo1": "Água",
 "tipo2": "null"
