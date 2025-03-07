@@ -1766,7 +1766,7 @@
 {
 "id": 222,
 "nome": "Corsola de Galar",
-"img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/pokemon_icon_222_61_shiny.png",
+"img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/Addressable%20Assets/pm222.fGALARIAN.icon.png",
 "tipo1": "Fantasma",
 "tipo2": "null"
 },
@@ -2054,6 +2054,13 @@
 "id": 260,
 "nome": "Swampert",
 "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/pokemon_icon_260_00_shiny.png",
+"tipo1": "Água",
+"tipo2": "Terrestre"
+},
+{
+"id": 260,
+"nome": "Mega Swampert",
+"img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/Addressable%20Assets/pm260.fMEGA.s.icon.png",
 "tipo1": "Água",
 "tipo2": "Terrestre"
 },

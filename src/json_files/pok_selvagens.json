@@ -2135,6 +2135,13 @@
 "tipo2": "Terrestre"
 },
 {
+"id": 260,
+"nome": "Mega Swampert",
+"img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/Addressable%20Assets/pm260.fMEGA.icon.png",
+"tipo1": "Água",
+"tipo2": "Terrestre"
+},
+{
 "id": 261,
 "nome": "Poochyena",
 "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/pokemon_icon_261_00.png",
