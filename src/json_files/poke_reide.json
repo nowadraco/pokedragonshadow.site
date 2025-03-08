@@ -2035,7 +2035,7 @@
   },
   {
     "dex": 26,
-    "nome": "Raichu (Alola)",
+    "nome": "Raichu de Alola",
     "idNome": "raichu_Alola",
     "statusBase": {
       "atk": 201,
@@ -2063,7 +2063,8 @@
     "familia": {
       "id": "FAMILIA_PIKACHU",
       "parente": "pikachu"
-    }
+    },
+    "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/Addressable%20Assets/pm26.fALOLA.icon.png"
   },
   {
     "dex": 27,
@@ -11148,7 +11149,7 @@
   },
   {
     "dex": 157,
-    "nome": "Typhlosion (Hisui)",
+    "nome": "Typhlosion hisui",
     "idNome": "typhlosion_Hisui",
     "statusBase": {
       "atk": 238,
@@ -11175,7 +11176,8 @@
     "familia": {
       "id": "FAMILIA_CYNDAQUIL",
       "parente": "quilava"
-    }
+    },
+    "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/Addressable%20Assets/pm157.fHISUIAN.icon.png"
   },
   {
     "dex": 157,
@@ -27354,6 +27356,41 @@
       "parente": "riolu"
     },
     "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/pokemon_icon_448_00.png"
+  },
+  {
+    "dex": 448,
+    "nome": "Mega Lucario",
+    "idNome": "lucario",
+    "statusBase": {
+      "atk": 236,
+      "def": 144,
+      "hp": 172
+    },
+    "tipos": [
+      "Lutador",
+      "Aço"
+    ],
+    "fastMoves": [
+      "BULLET_PUNCH",
+      "COUNTER",
+      "FORCE_PALM"
+    ],
+    "chargedMoves": [
+      "CLOSE_COMBAT",
+      "FLASH_CANNON",
+      "SHADOW_BALL",
+      "POWER_UP_PUNCH",
+      "AURA_SPHERE",
+      "BLAZE_KICK",
+      "THUNDER_PUNCH"
+    ],
+    "buddyDistancia": 5,
+    "custoTerceiroMove": 75000,
+    "familia": {
+      "id": "FAMILIA_LUCARIO",
+      "parente": "riolu"
+    },
+    "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/Addressable%20Assets/pm448.fMEGA.icon.png"
   },
   {
     "dex": 448,
