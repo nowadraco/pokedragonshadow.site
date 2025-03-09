@@ -1,5 +1,5 @@
 // URL do JSON (substitua com o link real do seu arquivo JSON)
-const urlJson = "https://raw.githubusercontent.com/nowadraco/pokedragonshadow.site/504b538a95514bc1337d4fdaa668c275663a137b/src/json_files/eventos.json"; 
+const urlJson = "https://raw.githubusercontent.com/nowadraco/pokedragonshadow.site/refs/heads/main/src/json_files/eventos.json"; 
 
 // Função para calcular o tempo restante
 function calcularCountdown(data) {
