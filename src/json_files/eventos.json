@@ -1,0 +1,26 @@
+[
+    {
+        "nome": "Evento X",
+        "imagem": "link-da-imagem.jpg",
+        "inicio": "2025-03-08T18:00",
+        "fim": "2025-03-10T18:00"
+    },
+    {
+        "nome": "Evento Y",
+        "imagem": "link-da-imagem2.jpg",
+        "inicio": "2025-03-09T12:00",
+        "fim": "2025-03-15T12:00"
+    },
+    {
+        "nome": "Evento Z",
+        "imagem": "link-da-imagem3.jpg",
+        "inicio": "2025-03-05T10:00",
+        "fim": "2025-03-06T10:00"
+    },
+    {
+        "nome": "Evento Z",
+        "imagem": "link-da-imagem3.jpg",
+        "inicio": "2025-03-05T10:00",
+        "fim": "2025-03-06T10:00"
+    }
+]
