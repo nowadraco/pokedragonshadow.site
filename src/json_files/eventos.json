@@ -18,6 +18,12 @@
         "fim": "2025-03-10T18:00"
     },
     {
+        "nome": "Evento X",
+        "imagem": "link-da-imagem.jpg",
+        "inicio": "2025-03-08T18:00",
+        "fim": "2025-03-10T18:00"
+    },
+    {
         "nome": "Evento Y",
         "imagem": "link-da-imagem2.jpg",
         "inicio": "2025-03-09T12:00",
