@@ -6610,14 +6610,14 @@
 {
 "id": 850,
 "nome": "Sizzlipede",
-"img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/Addressable%20Assets/pm850.icon.png",
+"img": "https://raw.githubusercontent.com/nowadraco/pokedragonshadow.site/refs/heads/main/src/imagens/pokemon/850.png",
 "tipo1": "Fogo",
 "tipo2": "Inseto"
 },
 {
 "id": 851,
 "nome": "Centiskorch",
-"img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/Addressable%20Assets/pm851.icon.png",
+"img": "https://raw.githubusercontent.com/nowadraco/pokedragonshadow.site/refs/heads/main/src/imagens/pokemon/851.png",
 "tipo1": "Fogo",
 "tipo2": "Inseto"
 },
