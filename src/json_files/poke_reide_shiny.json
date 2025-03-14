@@ -17338,6 +17338,38 @@
     },
     "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/pokemon_icon_260_00_shiny.png"
   },
+    {
+    "dex": 260,
+    "nome": "Mega Swampert",
+    "idNome": "swampert",
+    "statusBase": {
+      "atk": 208,
+      "def": 175,
+      "hp": 225
+    },
+    "tipos": [
+      "Água",
+      "Terrestre"
+    ],
+    "fastMoves": [
+      "MUD_SHOT",
+      "WATER_GUN"
+    ],
+    "chargedMoves": [
+      "EARTHQUAKE",
+      "SLUDGE_WAVE",
+      "SURF",
+      "HYDRO_CANNON",
+      "MUDDY_WATER"
+    ],
+    "buddyDistancia": 3,
+    "custoTerceiroMove": 10000,
+    "familia": {
+      "id": "FAMILIA_MUDKIP",
+      "parente": "marshtomp"
+    },
+    "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/Addressable%20Assets/pm260.fMEGA.s.icon.png"
+  },
   {
     "dex": 260,
     "nome": "Swampert (Mega)",
