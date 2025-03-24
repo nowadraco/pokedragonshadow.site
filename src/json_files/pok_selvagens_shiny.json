@@ -1057,6 +1057,27 @@
 "tipo2": "null"
 },
 {
+"id": 128,
+"nome": "Tauros de Paldea Espécie de Combate",
+"img": "https://raw.githubusercontent.com/nowadraco/pokedragonshadow.site/dc472e6f3c7da7bbd1dc3ebee5eebac0c4ccb3ef/src/imagens/pokemon/pm128.fPALDEA_COMBAT.s.icon.png",
+"tipo1": "Lutador",
+"tipo2": "null"
+},
+{
+"id": 128,
+"nome": "Tauros de Paldea Espécie Labareda",
+"img": "https://raw.githubusercontent.com/nowadraco/pokedragonshadow.site/21e9b705880685464a94f098646dd3b66851ca78/src/imagens/pokemon/pm128.fPALDEA_BLAZE.s.icon.png",
+"tipo1": "Lutador",
+"tipo2": "Fogo"
+},
+{
+"id": 128,
+"nome": "Tauros de Paldea Espécie Aquática",
+"img": "https://raw.githubusercontent.com/nowadraco/pokedragonshadow.site/dc472e6f3c7da7bbd1dc3ebee5eebac0c4ccb3ef/src/imagens/pokemon/pm128.fPALDEA_AQUA.s.icon.png",
+"tipo1": "Lutador",
+"tipo2": "Água"
+},
+{
 "id": 129,
 "nome": "Magikarp",
 "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/pokemon_icon_129_00_shiny.png",
@@ -4140,6 +4161,13 @@
 "id": 531,
 "nome": "Audino",
 "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/pokemon_icon_531_00_shiny.png",
+"tipo1": "Normal",
+"tipo2": "null"
+},
+{
+"id": 531,
+"nome": "Mega Audino",
+"img": "https://raw.githubusercontent.com/nowadraco/pokedragonshadow.site/dc472e6f3c7da7bbd1dc3ebee5eebac0c4ccb3ef/src/imagens/pokemon/pm531.fMEGA.s.icon.png",
 "tipo1": "Normal",
 "tipo2": "null"
 },
