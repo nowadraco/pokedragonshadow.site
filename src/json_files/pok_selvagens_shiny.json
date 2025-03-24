@@ -2730,6 +2730,27 @@
 "tipo2": "null"
 },
 {
+"id": 351,
+"nome": "Castform Forma Ensolarada",
+"img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/pokemon_icon_351_12_shiny.png",
+"tipo1": "Normal",
+"tipo2": "null"
+},
+{
+"id": 351,
+"nome": "Castform Forma Chuvosa",
+"img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/pokemon_icon_351_13_shiny.png",
+"tipo1": "Normal",
+"tipo2": "null"
+},
+{
+"id": 351,
+"nome": "Castform Forma Nevada",
+"img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/pokemon_icon_351_14_shiny.png",
+"tipo1": "Normal",
+"tipo2": "null"
+},
+{
 "id": 352,
 "nome": "Kecleon",
 "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/pokemon_icon_352_00_shiny.png",
@@ -3291,8 +3312,15 @@
 },
 {
 "id": 422,
-"nome": "Shellos",
+"nome": "Shellos do Mar Ocidental",
 "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/pokemon_icon_422_11_shiny.png",
+"tipo1": "Água",
+"tipo2": "null"
+},
+{
+"id": 422,
+"nome": "Shellos do Mar Leste",
+"img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/pokemon_icon_422_12_shiny.png",
 "tipo1": "Água",
 "tipo2": "null"
 },
@@ -5612,6 +5640,13 @@
 "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/Addressable%20Assets/pm724.s.icon.png",
 "tipo1": "Planta",
 "tipo2": "Fantasma"
+},
+{
+"id": 724,
+"nome": "Decidueye de Hisui",
+"img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/Addressable%20Assets/pm724.fHISUIAN.s.icon.png",
+"tipo1": "Planta",
+"tipo2": "Lutador"
 },
 {
     "id": 725,
