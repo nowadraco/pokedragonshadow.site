@@ -1113,6 +1113,27 @@
 "tipo2": "null"
 },
 {
+"id": 128,
+"nome": "Tauros de Paldea Espécie de Combate",
+"img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/pokemon_icon_128_00.png",
+"tipo1": "Normal",
+"tipo2": "null"
+},
+{
+"id": 128,
+"nome": "Tauros de Paldea Espécie Labareda",
+"img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/pokemon_icon_128_00.png",
+"tipo1": "Normal",
+"tipo2": "null"
+},
+{
+"id": 128,
+"nome": "Tauros de Paldea Espécie Aquática",
+"img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/pokemon_icon_128_00.png",
+"tipo1": "Normal",
+"tipo2": "null"
+},
+{
 "id": 129,
 "nome": "Magikarp",
 "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/pokemon_icon_129_00.png",
