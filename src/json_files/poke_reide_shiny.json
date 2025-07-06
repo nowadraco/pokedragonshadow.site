@@ -1762,6 +1762,34 @@
     "buddyDistancia": 1,
     "custoTerceiroMove": 10000
   },
+    {
+    "dex": 25,
+    "nome": "Pikachu (Aniversário)",
+    "idNome": "pikachu_5th_anniversary",
+    "statusBase": {
+      "atk": 112,
+      "def": 96,
+      "hp": 111
+    },
+    "tipos": [
+      "Elétrico",
+      "null"
+    ],
+    "fastMoves": [
+      "THUNDER_SHOCK",
+      "QUICK_ATTACK",
+      "PRESENT"
+    ],
+    "chargedMoves": [
+      "DISCHARGE",
+      "THUNDERBOLT",
+      "WILD_CHARGE",
+      "FLY"
+    ],
+    "buddyDistancia": 1,
+    "custoTerceiroMove": 100000,
+    "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/Addressable%20Assets/pm25.cANNIVERSARY_2022_NOEVOLVE.g2.s.icon.png"
+  },
   {
     "dex": 25,
     "nome": "Pikachu (Flying)",
