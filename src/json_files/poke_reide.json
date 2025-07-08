@@ -36340,7 +36340,8 @@
     "familia": {
       "id": "FAMILIA_RUFFLET",
       "parente": "rufflet"
-    }
+    },
+    "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/Addressable%20Assets/pm628.fHISUIAN.icon.png"
   },
   {
     "dex": 629,
@@ -39508,7 +39509,8 @@
     "familia": {
       "id": "FAMILIA_BERGMITE",
       "parente": "bergmite"
-    }
+    },
+    "img": "https://raw.githubusercontent.com/nowadraco/pogo_assets/refs/heads/master/Images/Pokemon%20-%20256x256/Addressable%20Assets/pm713.fHISUIAN.icon.png"
   },
   {
     "dex": 714,
